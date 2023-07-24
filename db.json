@@ -1,0 +1,385 @@
+{
+  "employees": {
+    "headers": [
+      {
+        "align": "start",
+        "key": "name",
+        "title": "Имя Фамилия"
+      },
+      { "key": "date", "title": "Дата рождения" },
+      { "key": "passport", "title": "Серия и номер паспорта", "sortable": false },
+      { "key": "gender", "title": "Пол" },
+      { "key": "active", "title": "Активность" }
+    ],
+    "body": [
+      {
+        "id":1,
+        "name": "Frozen Yogurt",
+        "date": "2001-10-20",
+        "passport": "AC5457894",
+        "gender": 1,
+        "active": 1
+      },
+      {
+        "id":2,
+        "name": "Ice cream sandwich",
+        "date": "1998-09-21",
+        "passport": "AA5454674",
+        "gender": 2,
+        "active": 1
+      },
+      {
+        "id":3,
+        "name": "Eclair",
+        "date": "2000-01-10",
+        "passport": "AC5367674",
+        "gender": 1,
+        "active": 0
+      },
+      {
+        "id":4,
+        "name": "Cupcake",
+        "date": "2004-10-06",
+        "passport": "AB5454347",
+        "gender": 2,
+        "active": 1
+      },
+      {
+        "id":5,
+        "name": "Gingerbread",
+        "date": "1999-10-28",
+        "passport": "AC3234866",
+        "gender": 1,
+        "active": 0
+      },
+      {
+        "id":6,
+        "name": "Jelly bean",
+        "date": "2003-10-06",
+        "passport": "AD9088455",
+        "gender": 2,
+        "active": 0
+      },
+      {
+        "id":7,
+        "name": "Lollipop",
+        "date": "1982-04-20",
+        "passport": "AB5454866",
+        "gender": 1,
+        "active": 1
+      },
+      {
+        "id":8,
+        "name": "Honeycomb",
+        "date": "1995-08-18",
+        "passport": "AA5454124",
+        "gender": 2,
+        "active": 1
+      },
+      {
+        "id":9,
+        "name": "Donut",
+        "date": "2006-08-10",
+        "passport": "AC5454986",
+        "gender": 1,
+        "active": 1
+      },
+      {
+        "id":10,
+        "name": "KitKat",
+        "date": "1990-10-10",
+        "passport": "AB5454566",
+        "gender": 2,
+        "active": 1
+      },
+      {
+        "id":11,
+        "name": "Никита Лебедев",
+        "date": "1990-02-12",
+        "passport": "AB5096566",
+        "gender": 1,
+        "active": 0
+      },
+      {
+        "id":12,
+        "name": "Петя Павлов",
+        "date": "2000-10-01",
+        "passport": "AB5092046",
+        "gender": 1,
+        "active": 1
+      },
+      {
+        "id":13,
+        "name": "Алёна Иванова",
+        "date": "1982-10-12",
+        "passport": "AB5091026",
+        "gender": 2,
+        "active": 1
+      },
+      {
+        "id":14,
+        "name": "Анастасия Смирнова",
+        "date": "1981-10-02",
+        "passport": "AB9864100",
+        "gender": 2,
+        "active": 0
+      },
+      {
+        "id":15,
+        "name": "Алёна Иванова",
+        "date": "1990-10-12",
+        "passport": "AB0903343",
+        "gender": 2,
+        "active": 1
+      },
+      {
+        "id":16,
+        "name": "Оксана Егорова",
+        "date": "1998-12-12",
+        "passport": "AB5096209",
+        "gender": 2,
+        "active": 1
+      }
+    ]
+  },
+  "documents": {
+    "headers": [
+      {
+        "align": "start",
+        "key": "type",
+        "title": "Тип документа"
+      },
+      { "key": "nomer", "title": "Номер документа" },
+      { "key": "date", "title": "Дата документа" },
+      { "key": "text", "title": "Описание", "sortable": false },
+      { "key": "authorId", "title": "Автор" }
+    ],
+    "body": [
+      {
+        "id":1,
+        "type": 1,
+        "nomer": 5457894,
+        "date": "2001-10-22",
+        "text": "Спасибо за ваше сотрудничество! В этом счете указаны суммы платежей за приобретенные вами продукты и услуги.",
+        "authorId": 1,
+        "client": {
+          "name": "Алексей Иванов",
+          "email": "Алексейиванов@gmail.com"
+        },
+        "serviceType": {
+          "type": 1,
+          "amount": 3,
+          "unitPrice": 20000
+        }
+      },
+      {
+        "id":2,
+        "type": 1,
+        "nomer": 3463465,
+        "date": "1998-09-21",
+        "text": "Ваш заказ здесь! Спасибо, что выбрали нас для покупки. В этом счете содержится подробная информация о выбранных вами продуктах и ​​услугах. Если у вас есть какие-либо вопросы, не стесняйтесь обращаться. Мы ценим ваш бизнес и с нетерпением ждем возможности снова служить вам в ближайшее время!",
+        "authorId": 1,
+        "client": {
+          "name": "Артём Смирнов",
+          "email": "Артёмсмирнов@gmail.com"
+        },
+        "serviceType": {
+          "type": 2,
+          "amount": 1,
+          "unitPrice": 150000
+        }
+      },
+      {
+        "id":3,
+        "type": 2,
+        "nomer": 6878979,
+        "date": "2000-01-10",
+        "text": "Доверенность по юридическим вопросам. Этот документ уполномочивает назначенного агента действовать от вашего имени в юридических вопросах. С этими полномочиями они могут представлять вас, подписывать документы и принимать решения, обеспечивая защиту ваших интересов. Доверьтесь нашему опыту, чтобы справляться с юридическими сложностями с усердием и осторожностью.",
+        "authorId": 3,
+        "agent": {
+          "name": "Егор Новиков",
+          "email": "ЕгорНовиков@gmail.com"
+        }
+      },
+      {
+        "id":4,
+        "type": 1,
+        "nomer": 7878996,
+        "date": "2004-10-06",
+        "text": "Уведомление о выставлении счета. Мы рады представить ваш счет за оказанные вам выдающиеся услуги. Ваше удовлетворение является нашим главным приоритетом, и мы включили разбивку расходов для вашего удобства. Как всегда, наша служба поддержки всегда готова помочь вам. Мы ценим ваше покровительство!",
+        "authorId": 1,
+        "client": {
+          "name": "Владимир Попов",
+          "email": "ВладимирПопов@gmail.com"
+        },
+        "serviceType": {
+          "type": 1,
+          "amount": 4,
+          "unitPrice": 50000
+        }
+      },
+      {
+        "id":5,
+        "type": 2,
+        "nomer": 6767885,
+        "date": "1999-10-28",
+        "text": "Финансовая доверенность. Предоставление финансовых полномочий является важным шагом в обеспечении надлежащего управления вашими делами. Эта доверенность позволяет вашему агенту проводить финансовые операции, оплачивать счета и разумно управлять активами. Будьте уверены, ваше финансовое благополучие в надежных руках.",
+        "authorId": 3,
+        "agent": {
+          "name": "Кира Фёдоров",
+          "email": "КираФёдоров@gmail.com"
+        }
+      },
+      {
+        "id":6,
+        "type": 2,
+        "nomer": 5654767,
+        "date": "2003-10-06",
+        "text": "Медицинская доверенность. Ваше здоровье имеет первостепенное значение, и этот документ уполномочивает вашего представителя принимать медицинские решения от вашего имени, когда вы не можете этого сделать. Доверьте им свои медицинские пожелания, зная, что они поддержат ваши предпочтения и будут отстаивать ваше благополучие.",
+        "authorId": 4,
+        "agent": {
+          "name": "Макс Волков",
+          "email": "МаксВолков@gmail.com"
+        }
+      },
+      {
+        "id":7,
+        "type": 1,
+        "nomer": 4365764,
+        "date": "1982-04-20",
+        "text": "Счет-фактура. Этот счет-фактура отражает ваши недавние транзакции, демонстрируя качество услуг, которыми вы воспользовались. Ваша лояльность является нашим источником вдохновения, и мы тщательно детализировали каждый платеж для вашего обзора. Не стесняйтесь обращаться к нам с любыми вопросами. Служить вам одно удовольствие!",
+        "authorId": 3,
+        "client": {
+          "name": "Валентин Васильев",
+          "email": "ВалентинВасильев@gmail.com"
+        },
+        "serviceType": {
+          "type": 2,
+          "amount": 1,
+          "unitPrice": 230000
+        }
+      },
+      {
+        "id":8,
+        "type": 2,
+        "nomer": 8987956,
+        "date": "1995-08-18",
+        "text": "Real Estate Power of Attorney - Simplify real estate matters with this authorization, empowering your agent to handle property-related affairs. Whether it's buying, selling, or managing real estate, they will act diligently, safeguarding your interests at every turn.",
+        "authorId": 5,
+        "agent": {
+          "name": "Никита Лебедев",
+          "email": "НикитаЛебедев@gmail.com"
+        }
+      },
+      {
+        "id":9,
+        "type": 1,
+        "nomer": 2345458,
+        "date": "2006-08-10",
+        "text": "Invoice Recap - It's time to settle your balance for the fantastic products you ordered. Your satisfaction is essential to us, and we've provided a detailed account of the charges incurred. Our team is here to ensure a seamless experience. Thank you for being a valued customer!",
+        "authorId": 6,
+        "client": {
+          "name": "Данил Петров",
+          "email": "ДанилПетров@gmail.com"
+        },
+        "serviceType": {
+          "type": 1,
+          "amount": 2,
+          "unitPrice": 30000
+        }
+      },
+      {
+        "id":10,
+        "type": 1,
+        "nomer": 9875782,
+        "date": "2001-09-10",
+        "text": "Payment Request - We're thrilled you chose us for your needs. Your invoice is now ready, showing the services rendered and the total amount due. If you need any assistance, our support team is just a call away. We appreciate your trust in our expertise!",
+        "authorId": 7,
+        "client": {
+          "name": "Денис Соколов",
+          "email": "ДенисСоколов@gmail.com"
+        },
+        "serviceType": {
+          "type": 2,
+          "amount": 1,
+          "unitPrice": 356000
+        }
+      },
+      {
+        "id":11,
+        "type": 1,
+        "nomer": 4645767,
+        "date": "2008-01-01",
+        "text": "Receipt of Payment - Thank you for your recent purchase! We've crafted this invoice to illustrate your payment details accurately. If you have any questions, our dedicated staff is here to assist you. We take pride in your satisfaction as a cherished customer!",
+        "authorId": 8,
+        "client": {
+          "name": "Дмитрий Михайлов",
+          "email": "ДмитрийМихайлов@gmail.com"
+        },
+        "serviceType": {
+          "type": 1,
+          "amount": 5,
+          "unitPrice": 15000
+        }
+      },
+      {
+        "id":12,
+        "type": 1,
+        "nomer": 1235456,
+        "date": "2002-09-09",
+        "text": "Receipt of Payment - Thank you for your recent purchase! We've crafted this invoice to illustrate your payment details accurately. If you have any questions, our dedicated staff is here to assist you. We take pride in your satisfaction as a cherished customer!",
+        "authorId": 9,
+        "client": {
+          "name": "Елена Соколова",
+          "email": "ЕленаСоколова@gmail.com"
+        },
+        "serviceType": {
+          "type": 2,
+          "amount": 1,
+          "unitPrice": 341000
+        }
+      },
+      {
+        "id":13,
+        "type": 2,
+        "nomer": 8909267,
+        "date": "1995-08-20",
+        "text": "Real Estate Power of Attorney - Simplify real estate matters with this authorization, empowering your agent to handle property-related affairs. Whether it's buying, selling, or managing real estate, they will act diligently, safeguarding your interests at every turn.",
+        "authorId": 9,
+        "agent": {
+          "name": "Ирина Михайлова",
+          "email": "ИринаМихайлова@gmail.com"
+        }
+      },
+      {
+        "id":14,
+        "type": 2,
+        "nomer": 7809127,
+        "date": "2010-08-20",
+        "text": "Business Power of Attorney - Entrust your business matters to a competent agent who will represent your company diligently. This document empowers them to make decisions, enter contracts, and manage operations, allowing your business to thrive under their stewardship.",
+        "authorId": 10,
+        "agent": {
+          "name": "Ксения Новикова",
+          "email": "КсенияНовикова@gmail.com"
+        }
+      },
+      {
+        "id":15,
+        "type": 1,
+        "nomer": 7302780,
+        "date": "1988-10-10",
+        "text": "Elderly Care Power of Attorney - Secure comprehensive care for your elderly loved one with this authorization. Your agent will have the authority to manage healthcare, financial affairs, and other essential aspects, providing support and comfort during this phase of life.",
+        "authorId": 12,
+        "client": {
+          "name": "Мария Волкова",
+          "email": "МарияВолкова@gmail.com"
+        },
+        "serviceType": {
+          "type": 1,
+          "amount": 6,
+          "unitPrice": 23300
+        }
+      }
+    ]
+  }
+}

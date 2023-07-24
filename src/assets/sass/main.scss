@@ -1,0 +1,25 @@
+.main{
+    &__layout{
+        height: 100%;
+        &-main{
+            height: 100%;
+            gap: 10px;
+            &__header{
+                height: 10%;
+            }
+            &__router{
+                overflow: auto;
+                height: 90%;
+                &::-webkit-scrollbar{
+                    width: 12px;
+                    background: #99999999;
+                    border-radius: 6px;
+                    &-thumb{
+                        background: #666666;
+                        border-radius: 6px;
+                    }
+                }
+            }
+        }
+    }
+}

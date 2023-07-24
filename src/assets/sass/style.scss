@@ -1,0 +1,73 @@
+// import Sass
+@import './main.scss';
+
+// Universal scss
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+// Common scss
+
+ul{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+
+// Default scss
+
+#listApp{
+    height: 100vh;
+}
+// home
+.home{
+    height: 100%;
+    // padding-bottom: 160px;
+}
+.homeRouter{
+    display: flex;
+    align-items: center;
+    hr{
+        width: 1px;
+        height: 100%;
+        background: #333;
+        border: none;
+    }
+    a{
+        padding: 2px 6px 4px;
+        color: #1867C0;
+        &:hover{
+            color: green !important;
+        }
+    }
+}
+// table
+.tableName{
+    &:hover{
+        color: #01579B;
+    }
+}
+.documentsText{
+    max-width: 310px;
+    width: 100%;
+    display: -webkit-box;
+    -webkit-line-clamp: 1; /* Limit the text to one lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+// document
+.docAuthorCard{
+    border: 1px solid #99999999;
+    display: inline-block;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: all .3s ease;
+}
+@media (max-width: 400px) {
+    .docAuthorCard{
+        font-size: 13px;
+    }
+}
