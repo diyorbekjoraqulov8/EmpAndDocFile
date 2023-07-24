@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 import axios from "axios";
 export const useProductStore = defineStore('index', {
     state: () => ({
-        apiPath:"http://localhost:3004",
+        apiPath:"https://json-server-empanddoc-d08aaeb3978f.herokuapp.com",
         employees: null,
         documents: null,
         randomColor: ''
