@@ -1,7 +1,6 @@
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, watch } from "vue";
 import Table from "@/components/Table.vue";
-
 // store
 import { useProductStore } from "@/stores/index";
 const store = useProductStore()
@@ -11,81 +10,59 @@ const employees = computed(()=>{
   return store.employees
 })
 
-// Is Gender sort
-
-const isGender = computed(()=>{
-  const gender = [3]
-  employees.value?.body.forEach(item => {
-    if (!gender.includes(item.gender)) {
-      gender.push(item.gender)
-    }
-  })
-  gender.sort()
-
-  const titleMap = {
-    1: "Мужской",
-    2: "Женский",
-    3: "Все",
-  };
-
-  let result = gender.map(num => ({
-    id: num,
-    title: titleMap[num]
-  }));
-
-  return result
-})
-
 let genderValueId = ref(3)
 
-// Is Active sort
-const isActive = computed(()=>{
-  const active = [2]
-  employees.value?.body.forEach(item => {
-    if (!active.includes(item.active)) {
-      active.push(item.active)
-    }
-  })
-  active.sort()
-
-  const titleMap = {
-    0: "Не активен",
-    1: "Активный",
-    2: "Все",
-  };
-
-  let result = active.map(num => ({
-    id: num,
-    title: titleMap[num]
-  }));
-
-  return result
-})
+const pageObj = ref(null)
 
 let activeValueId = ref(2)
 
-// Sorting dates
+const changePage = (page) => {
+  store.filterEmpValue(genderValueId.value,activeValueId.value,page)
+  
+  pageObj.value = page
+}
 
-const filterValue = computed(()=>{
-  let value;
-  if (genderValueId.value !== 3) {
-    if (activeValueId.value === 2) {
-      value = employees.value?.body.filter(item => item.gender === genderValueId.value);
-    }else {
-      const activeSort = computed(()=>{
-        return employees.value?.body.filter(item => item.active === activeValueId.value);
-      })
-      value = activeSort.value.filter(item => item.gender === genderValueId.value);
-    }
-  }else {
-    if (activeValueId.value !== 2) {
-      value = employees.value?.body.filter(item => item.active === activeValueId.value);
-    }else{
-      value = employees.value?.body
-    }
+// gender sort
+
+watch(genderValueId, (newVal, oldVal)=>{
+  let obj = {
+    page: 1,
+    perPage: pageObj.value.perPage || 5,
+    search: pageObj.value.search
   }
-  return value
+  store.filterEmpValue(newVal, activeValueId.value, obj)
 })
+// active sort
+watch(activeValueId, (newVal, oldVal)=>{
+  let obj = {
+    page: 1,
+    perPage: pageObj.value.perPage || 5,
+    search: pageObj.value.search
+  }
+  store.filterEmpValue(genderValueId.value, newVal, obj)
+})
+
+// Employees Bread CrumbItems
+const BreadcrumbItems = ref([
+  {
+    title: 'Главное',
+    disabled: false,
+    to: '/',
+  },
+  {
+    title: 'Сотрудники',
+    disabled: false,
+    to: '/employees',
+    color: '#fff'
+  },
+  {
+    title: 'Сотрудник',
+    disabled: true,
+    to: '/',
+  },
+])
+
+store.breadcrumbItems = BreadcrumbItems.value
 
 </script>
 
@@ -95,7 +72,7 @@ const filterValue = computed(()=>{
       <v-col cols="12" sm="6" md="4" lg="3">
         <v-select
           v-model="genderValueId"
-          :items="isGender"
+          :items="store.empSorting?.genders"
           item-text="title"
           item-value="id"
           label="Пол"
@@ -104,7 +81,7 @@ const filterValue = computed(()=>{
       <v-col cols="12" sm="6" md="4" lg="2">
         <v-select
           v-model="activeValueId"
-          :items="isActive"
+          :items="store.empSorting?.empActive"
           item-text="title"
           item-value="id"
           label="Активность"
@@ -113,6 +90,8 @@ const filterValue = computed(()=>{
     </v-row>
     <Table 
     :headers="employees?.headers"
-    :body="filterValue"/>
+    :body="employees?.body"
+    :pageSize="store.emoloyeesSize"
+    @changePage="changePage"/>
   </div>
 </template>

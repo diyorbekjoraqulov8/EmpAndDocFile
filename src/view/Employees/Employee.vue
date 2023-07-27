@@ -1,19 +1,25 @@
 <script setup>
-import { computed } from 'vue'
+import { ref, onMounted } from 'vue'
 import Table from '@/components/Table.vue';
+import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs.vue";
 import { useRoute } from 'vue-router'
 // directives
-import { findAvatar,avatarBgColor } from '@/directives/directive'
+import { findAvatar } from '@/directives/directive'
+
 // store
 import { useProductStore } from "@/stores/index";
 const store = useProductStore()
 
+const pageObj = ref(null)
+
+// Current Route
+const router = useRoute()
+
 // using $route
 const routeId = +useRoute().params.id;
 
-// Current employee
-const employee = computed(()=>{
-  return store.employees?.body.find(employee => employee.id === routeId)
+onMounted(() => {
+  store.employeeFind(routeId)
 })
 
 // Birth date Format
@@ -21,21 +27,43 @@ const formatDate = (date) =>{
   return new Date(date).toLocaleDateString();
 }
 
-// Document table for the current employee
-const employeeDoc = (id) => {
-    let value = []
-    store.documents?.body.forEach(item => {
-        if (item.authorId === id) {
-            value.push(item)
-        }
-    });
-    return value
+// Employee docs change page
+const changePage = (page) =>{
+  pageObj.value = page
+
+  let obj = {
+    page: page.page,
+    perPage: page.perPage || 5,
+    search: page.search
+  }
+  store.employeeDocsFind(routeId,obj)
 }
 
+// Employee Bread CrumbItems
+const BreadcrumbItems = ref([
+  {
+    title: 'Главное',
+    disabled: false,
+    to: '/',
+  },
+  {
+    title: 'Сотрудники',
+    disabled: false,
+    to: '/employees',
+  },
+  {
+    title: 'Сотрудник',
+    disabled: false,
+    to: router.path,
+  },
+])
+
+store.breadcrumbItems = BreadcrumbItems.value
 </script>
 
 <template>
-    <v-container class="pa-0">
+  <div>
+    <v-container v-if="store.employee && store.employeeDocs" class="pa-0">
       <v-card>
         <v-card-title class="text-h6 text-sm-h5 headline">Профиль сотрудника</v-card-title>
         <v-card-text>
@@ -45,7 +73,7 @@ const employeeDoc = (id) => {
                   :color="store.randomColor"
                   size="120"
                 >
-                    <span class="text-h3 text-uppercase">{{ findAvatar(employee.name) }}</span>
+                    <span class="text-h3 text-uppercase">{{ findAvatar(store.employee.name) }}</span>
                 </v-avatar>
             </v-col>
             <v-col cols="12" md="8">
@@ -55,7 +83,7 @@ const employeeDoc = (id) => {
                     <p class="text-subtitle-1">Имя Фамилия:</p>
                 </v-col>
                 <v-col cols="12" sm="6">
-                    <p class="text-subtitle-1">{{ employee.name }} </p>
+                    <p class="text-subtitle-1">{{ store.employee?.name }} </p>
                 </v-col>
               </v-row>
               <v-row>
@@ -64,7 +92,7 @@ const employeeDoc = (id) => {
                   <p class="text-subtitle-1">Дата рождения:</p>
                 </v-col>
                 <v-col cols="12" sm="6">
-                    <p class="text-subtitle-1">{{ formatDate(employee.date) }}</p>
+                    <p class="text-subtitle-1">{{ formatDate(store.employee?.date) }}</p>
                 </v-col>
               </v-row>
               <v-row>
@@ -73,7 +101,7 @@ const employeeDoc = (id) => {
                   <p class="text-subtitle-1">Серия и номер паспорта:</p>
                 </v-col>
                 <v-col cols="12" sm="6">
-                    <p class="text-subtitle-1">{{ employee.passport }}</p>
+                    <p class="text-subtitle-1">{{ store.employee?.passport }}</p>
                 </v-col>
               </v-row>
               <v-row>
@@ -82,7 +110,7 @@ const employeeDoc = (id) => {
                   <p class="text-subtitle-1">Пол:</p>
                 </v-col>
                 <v-col cols="12" sm="6">
-                    <p class="text-subtitle-1">{{ employee.gender === 1 ? "	Мужской" : "Женский" }}</p>
+                    <p class="text-subtitle-1">{{ store.employee?.gender === 1 ? "	Мужской" : "Женский" }}</p>
                 </v-col>
               </v-row>
               <v-row>
@@ -91,7 +119,7 @@ const employeeDoc = (id) => {
                   <p class="text-subtitle-1">Активность:</p>
                 </v-col>
                 <v-col cols="12" sm="6">
-                  <p class="text-subtitle-1">{{ employee.active === 0 ? "		Не активен" : "Активный" }}</p>
+                  <p class="text-subtitle-1">{{ store.employee?.active === 0 ? "		Не активен" : "Активный" }}</p>
                 </v-col>
               </v-row>
             </v-col>
@@ -101,8 +129,12 @@ const employeeDoc = (id) => {
             <v-card-title class="text-h6 text-sm-h5 headline">Документы сотрудника</v-card-title>
             <Table 
             :headers="store.documents?.headers"
-            :body="employeeDoc(+$route.params.id)"/>
+            :body="store.employeeDocs?.docs"
+            :pageSize="store.employeeDocs.docsSize"
+            @changePage="changePage"/>
         </v-card-text>
       </v-card>
     </v-container>
+  </div>
+
 </template>

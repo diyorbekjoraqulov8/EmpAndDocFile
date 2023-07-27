@@ -8,6 +8,7 @@
                 height: 10%;
             }
             &__router{
+                position: relative;
                 overflow: auto;
                 height: 90%;
                 &::-webkit-scrollbar{

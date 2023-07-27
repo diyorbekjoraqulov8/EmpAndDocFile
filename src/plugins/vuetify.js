@@ -25,14 +25,14 @@ export default createVuetify({
           primary: '#1867C0',
           secondary: '#5CBBF6',
           lightGray: '#4444',
-          tableName: '#333'
+          tableName: '#333',
         },
       },
       dark: {
         colors: {
           primary: '#1867C0',
           lightGray: '#ffffff67',
-          tableName: '#fff'
+          tableName: '#fff',
         }
       }
     },

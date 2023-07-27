@@ -54,8 +54,11 @@
                 <Header class="main__layout-main__header"/>
 
                 <!-- Router View part -->
+                <Breadcrumbs 
+                :items="store.breadcrumbItems"/>
                 <div class="main__layout-main__router px-3 py-2">
                     <RouterView/>
+                    <Loader v-if="store.progresLoader"/>
                 </div>
             </v-main>
         </v-layout>
@@ -68,6 +71,9 @@ import { ref } from 'vue';
 import { useProductStore } from "@/stores/index";
 // import components
 import Header from './Header.vue';
+import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs.vue";
+// loading
+import Loader from '@/Loading/Loader.vue'
 
 // window size directive
 import { useWindowSize } from '@/directives/directive';
